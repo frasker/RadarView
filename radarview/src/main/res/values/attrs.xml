@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <declare-styleable name="RadarView">
+        <attr name="r_radius" format="dimension" />
+        <attr name="r_axisTickCount" format="dimension" />
+        <attr name="r_radarBgColor" format="reference|color" />
+        <attr name="r_radarLineColor" format="reference|color" />
+        <attr name="r_valueColor" format="reference|color" />
+        <attr name="r_valueLineColor" format="reference|color" />
+        <attr name="r_showAnimation" format="boolean" />
+        <attr name="r_textColor" format="reference|color" />
+        <attr name="r_textSize" format="reference|dimension" />
+    </declare-styleable>
+
+</resources>
