@@ -159,7 +159,7 @@ public class RadarView extends View {
         if (isDataListValid()) {
             drawBefore(canvas);
             drawSpiderweb(canvas);
-            drawText(canvas, mArrayDotX[axisTickCount], mArrayDotY[axisTickCount], count);
+            drawText(canvas, mArrayDotX[axisTickCount], mArrayDotY[axisTickCount], dataList);
             drawRegion(canvas);
             drawAfter(canvas);
         }
@@ -235,7 +235,7 @@ public class RadarView extends View {
         }
     }
 
-    protected void drawText(Canvas canvas, float[] dotX, float[] dotY, int count) {
+    protected void drawText(Canvas canvas, float[] dotX, float[] dotY, List<RadarData> dataList) {
         textPaint.setTextSize(textSize);
         Paint.FontMetrics fontMetrics = textPaint.getFontMetrics();
         float fontHeight = fontMetrics.descent - fontMetrics.ascent;
@@ -304,6 +304,10 @@ public class RadarView extends View {
             dataY = new float[count];
             invalidate();
         }
+    }
+
+    public List<RadarData> getDataList() {
+        return dataList;
     }
 
     private void calcAllPoints() {
