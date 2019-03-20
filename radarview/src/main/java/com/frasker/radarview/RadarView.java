@@ -13,8 +13,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
-import com.frasker.radarview2.R;
-
 import java.util.List;
 
 public class RadarView extends View {
@@ -327,7 +325,7 @@ public class RadarView extends View {
             circlePaint.setColor(valueLineColor);
             circlePaint.setStrokeWidth(dip2px(getContext(), valueLineWidth));
             circlePaint.setStyle(Paint.Style.STROKE);
-            canvas.drawCircle(x, y, radius, circlePaint);
+            canvas.drawCircle(x, y, valuePointRadius, circlePaint);
         }
     }
 
