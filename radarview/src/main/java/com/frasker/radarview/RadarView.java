@@ -44,7 +44,7 @@ public class RadarView extends View {
 
     private float radarLineWidth = 0.5f;//雷达网线宽度dp
     private float valueLineWidth = 1f;//数据区边宽度dp
-    private float valuePointRadius = 3f;//数据区圆点半径dp
+    private float valuePointRadius = 2f;//数据区圆点半径dp
     private float textSize;//字体大小sp
 
     private int mWidth, mHeight;
@@ -66,7 +66,7 @@ public class RadarView extends View {
 
     public RadarView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        //setLayerType(View.LAYER_TYPE_SOFTWARE, null); 应该没有用到限制API
         mDecelerateInterpolator = new DecelerateInterpolator(DECELERATE_INTERPOLATION_FACTOR);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RadarView);
         defaultRadius = typedArray.getDimension(R.styleable.RadarView_r_radius, -1);
@@ -156,12 +156,21 @@ public class RadarView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.translate(mWidth / 2, mHeight / 2);
-
         if (isDataListValid()) {
+            drawBefore(canvas);
             drawSpiderweb(canvas);
             drawText(canvas, mArrayDotX[axisTickCount], mArrayDotY[axisTickCount], count);
             drawRegion(canvas);
+            drawAfter(canvas);
         }
+    }
+
+    protected void drawAfter(Canvas canvas) {
+
+    }
+
+    protected void drawBefore(Canvas canvas) {
+
     }
 
 
@@ -325,7 +334,7 @@ public class RadarView extends View {
             circlePaint.setColor(valueLineColor);
             circlePaint.setStrokeWidth(dip2px(getContext(), valueLineWidth));
             circlePaint.setStyle(Paint.Style.STROKE);
-            canvas.drawCircle(x, y, valuePointRadius, circlePaint);
+            canvas.drawCircle(x, y, dip2px(getContext(), valuePointRadius), circlePaint);
         }
     }
 
