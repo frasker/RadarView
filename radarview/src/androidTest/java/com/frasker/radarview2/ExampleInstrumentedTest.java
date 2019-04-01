@@ -1,7 +1,3 @@
-/*
- * Copyright (C) 2019 Baidu, Inc. All Rights Reserved.
- */
-
 package com.frasker.radarview2;
 
 import android.content.Context;

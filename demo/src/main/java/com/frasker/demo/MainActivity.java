@@ -1,11 +1,10 @@
-/*
- * Copyright (C) 2019 Baidu, Inc. All Rights Reserved.
- */
-
 package com.frasker.demo;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -39,5 +38,12 @@ public class MainActivity extends AppCompatActivity {
                 radarView.playAnimation();
             }
         });
+
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("push://com.baidu.android.push/notification?msg=haha"));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        String intentUri = intent.toUri(Intent.URI_INTENT_SCHEME);
+        Log.i("intentUri", intentUri);
     }
 }
